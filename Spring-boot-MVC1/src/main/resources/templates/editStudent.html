@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template">
+<head>
+    <meta charset="UTF-8">
+    <title>Lists of Students</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class="col-md-6 offset-3">
+        <br><br><br>
+        <form method="post" th:action="@{save(name=${name}, page=${page})}">
+            <div>
+                <label for="nom">ID: </label>
+                <label th:text="${student.id}"></label>
+                <input th:value="${student.id}" type="hidden" class="form-control">
+                <span class="text-danger" th:errors="${student.nom}"></span>
+            </div>
+            <br>
+            <div>
+                <label for="nom">Nom: </label><input id="nom" th:value="${student.nom}" type="text" class="form-control"
+                                                     name="nom">
+                <span class="text-danger" th:errors="${student.nom}"></span>
+            </div>
+            <br>
+            <div>
+                <label>Prénom: </label><input th:value="${student.prenom}" type="text" class="form-control"
+                                              name="prenom">
+                <span th:errors="${student.prenom}"></span>
+            </div>
+            <br>
+            <button type="submit">Edit</button>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
